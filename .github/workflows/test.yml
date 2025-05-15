@@ -3,33 +3,7 @@ name: 'test'
 on:
   push:
 
-jobs:
-  validate-commit-message:
-    runs-on: ubuntu-latest
-    outputs:
-      is_invalid_message: ${{ steps.check_message.outputs.is_invalid }}
-    steps:
-      - name: Check commit message format
-        id: check_message
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const commitMessage = context.payload.head_commit.message;
-            // Regex для проверки формата: type(scope?): message
-            // Пример: fix(core): resolve bug
-            // Пример: feat: add new feature
-            // Пример: chore(deps): update dependencies
-            const regex = /^\w+(\(\w+\))?:\s+.+$/; // Ваше регулярное выражение
-
-            if (regex.test(commitMessage)) {
-              console.log('Commit message IS VALID:', commitMessage);
-              core.setOutput('is_invalid', 'false');
-            } else {
-              console.log('Commit message IS INVALID:', commitMessage);
-              core.setOutput('is_invalid', 'true');
-            }
-          result-encoding: string # Важно для правильной передачи boolean как строки
-          
+jobs:   
   test:
     timeout-minutes: 90
     runs-on: ubuntu-latest
