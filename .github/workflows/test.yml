@@ -43,7 +43,7 @@ jobs:
           fetch-depth: 0
 
       - name: AI Code Reviewer
-        uses: Shiro-nn/ai-code-reviewer@main
+        uses: Shiro-nn/ai-commit-fixer@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.AI_API_KEY }}
